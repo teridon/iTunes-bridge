@@ -92,6 +92,24 @@ exports.soundVolume = function(volume) {
     }
 };
 /**
+ * Tells iTunes to go to next song
+ */
+exports.next = function (song) {
+    runScript('next', 'control');
+};
+/**
+ * Tells iTunes to go to previous song
+ */
+exports.prev = function (song) {
+    runScript('prev', 'control');
+};
+/**
+ * Tells iTunes to go to toggle play/pause
+ */
+exports.playpause = function (song) {
+    runScript('playpause', 'control');
+};
+/**
  * Tells iTunes to play
  */
 exports.play = function (song) {
