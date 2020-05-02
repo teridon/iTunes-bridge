@@ -269,6 +269,22 @@ exports.PlayPlaylist = function (playlistName) {
     }
 }
 
+// Returns a JSON array of iTunes playlist names
+exports.getPlaylists = function () {
+    try {
+        var playlistArr = new Array();
+        var	numPlaylists = playlists.Count;
+        var i = 1; 
+        while (i <= numPlaylists) {
+            var	currPlaylist = playlists.Item(i);
+            playlistArr[i-1] = currPlaylist.Name;
+            i++;
+        }
+        return playlistArr;
+    } catch (err) {
+        return null;
+    }
+}
 
 // Starting the event system (track change and player state change)
 that.currentTrack = null;
