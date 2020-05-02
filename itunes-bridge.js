@@ -22,6 +22,8 @@ var fs = require('fs');
 var {execSync} = require('child_process');
 var winax = require('winax');
 var	iTunesApp = new ActiveXObject("iTunes.Application");
+var	mainLibrary = iTunesApp.LibrarySource;
+var	playlists = mainLibrary.Playlists;
 var events = require('events');
 var event = new events.EventEmitter();
 var plist = require('plist');
@@ -254,7 +256,18 @@ exports.getTrackCount = function () {
     }
 };
 
-
+exports.PlayPlaylist = function (playlistName) {
+    try {
+        var playlist = playlists.ItemByName(playlistName);
+        // kludge to force shuffle:
+        playlist.Shuffle = 0;
+        playlist.Shuffle = 1;
+        playlist.PlayFirstTrack();
+        return playlist;
+    } catch (err) {
+        return null;
+    }
+}
 
 
 // Starting the event system (track change and player state change)
