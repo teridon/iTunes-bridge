@@ -276,7 +276,7 @@ exports.getPlaylists = function () {
         var	numPlaylists = playlists.Count;
         var i = 1; 
         while (i <= numPlaylists) {
-            var	currPlaylist = playlists.Item(i);
+            var currPlaylist = playlists.Item(i);
             playlistArr[i-1] = currPlaylist.Name;
             i++;
         }
